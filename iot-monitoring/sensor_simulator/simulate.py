@@ -1,7 +1,9 @@
 import asyncio
 import random
 import aiohttp
-URL = "https://sua-api.render.com/data"
+
+URL = "https://project-a3-1.onrender.com/data"
+
 async def send_data(sensor_id):
     while True:
         data = {
@@ -13,3 +15,8 @@ async def send_data(sensor_id):
             await session.post(URL, json=data)
         await asyncio.sleep(5)
 
+async def main():
+    tasks = [send_data(f"sensor_{i}") for i in range(5)]
+    await asyncio.gather(*tasks)
+
+asyncio.run(main())
