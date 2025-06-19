@@ -4,7 +4,7 @@ export default function Dashboard() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    const socket = new WebSocket("wss://project-a3-1.onrender.com/ws");
+    const socket = new WebSocket("wss://a3-project.onrender.com/ws");
     socket.onmessage = (event) => setMessage(event.data);
 
     return () => socket.close();
